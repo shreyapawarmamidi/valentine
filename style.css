@@ -1,0 +1,243 @@
+/* Set the colour and the position of the background and the elements */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #EDE8FF;
+  }
+  
+  .container {
+    position: relative;
+  }
+  .valentines {
+    position: relative;
+    top: 50px;
+    cursor: pointer;
+    animation: up 3s linear infinite;
+  }
+  
+  /* Style the envelope and the card */
+  .envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: #B7A4FB;
+  }
+  
+  .envelope:before {
+    background-color: #B7A4FB;
+    content: "";
+    position: absolute;
+    width: 212px;
+    height: 212px;
+    transform: rotate(45deg);
+    top: -105px;
+    left: 44px;
+    border-radius: 30px 0 0 0;
+  }
+  
+  .card {
+    position: absolute;
+    background-color: #eae2b7;
+    width: 270px;
+    height: 170px;
+    top: 5px;
+    left: 15px;
+    box-shadow: -5px -5px 100px rgba(0, 0, 0, 0.4);
+  }
+  
+  .card:before {
+    content: "";
+    position: absolute;
+    border: 3px solid #003049;
+    border-style: dotted;
+    width: 240px;
+    height: 140px;
+    left: 12px;
+    top: 12px;
+  }
+  
+  .text {
+    position: absolute;
+    font-family:  'Brush Script MT', cursive;
+    font-size: 28px;
+    text-align: center;
+    line-height: 25px;
+    top: 30px;
+    left: 65px;
+    color: #003049;
+  }
+  
+  .heart {
+    background-color: #d62828;
+    display: inline-block;
+    height: 30px;
+    margin: 0 10px;
+    position: relative;
+    top: 110px;
+    left: 105px;
+    transform: rotate(-45deg);
+    width: 30px;
+  }
+  
+  .heart:before,
+  .heart:after {
+    content: "";
+    background-color: #d62828;
+    border-radius: 50%;
+    height: 30px;
+    position: absolute;
+    width: 30px;
+  }
+  
+  .heart:before {
+    top: -15px;
+    left: 0;
+  }
+  
+  .heart:after {
+    left: 15px;
+    top: 0;
+  }
+  .front {
+    position: absolute;
+    border-right: 180px solid #C6B8FA; /* side part of envelope*/
+    border-top: 95px solid transparent;
+    border-bottom: 100px solid transparent;
+    left: 120px;
+    top: 5px;
+    width: 0;
+    height: 0;
+    z-index: 10;
+  }
+  
+  .front:before {
+    position: absolute;
+    content: "";
+    border-left: 300px solid #D2C9F6 ; /*front part of envelope*/
+    border-top: 195px solid transparent;
+    left: -120px;
+    top: -95px;
+    width: 0;
+    height: 0;
+  }
+  
+  /* Add the shadow */
+  .shadow {
+    position: absolute;
+    width: 330px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    bottom: 205px;  /* Adjusted the value to center the shadow */
+    left: calc(50% - 165px);  /* Center the shadow horizontally */
+    animation: scale 3s linear infinite;
+    z-index: -1;
+}
+  
+  /* To move the envelope up and down */
+  @keyframes up {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-34px);
+    }
+  }
+  
+  /* to scale the shadow */
+  @keyframes scale {
+    0%,
+    100% {
+      transform: scaleX(1);
+    }
+    50% {
+      transform: scaleX(0.85);
+    }
+  }
+
+  *, *::after, *::before {
+    box-sizing: border-box;
+  }
+  
+  #custom-button {
+    /* Add your custom styles here */
+    background-color: #9081c5;
+    position: fixed;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    left: 700px;
+    top: 600px;
+  }
+  
+
+
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid rgb(57, 23, 86);
+    border-radius: 10px;
+    z-index: 10;
+    background-color: #ede9fd;
+    width: 500px;
+    max-width: 80%;
+  }
+  
+  .modal.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(64, 35, 92);
+    font-family:  'Brush Script MT', cursive;
+    font-size: 40px;
+  }
+  
+  .modal-header .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .modal-body {
+    padding: 10px 15px;
+    font-family:  'Quicksand', cursive;
+  }
+  
+  #overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+  }
+  
+  #overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
